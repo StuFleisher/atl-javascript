@@ -1,29 +1,34 @@
 import {useState, useEffect} from "react";
 
 function UserInput({room, roomSelect}) {
-	const [formData, setFormData] = useState(room.exits[0]);
+	const [formData, setFormData] = useState({roomSelect:room.exits[0]});
+	console.log("rendering userInput, formData:", formData);
+
+	useEffect(function updateFormOnRoomChange(){
+		console.log("useEffectRunning,", room);
+		setFormData({roomSelect:room.exits[0]})
+	},[room])
 
 	function handleChange(evt) {
-		console.log('handling change', evt);
 		const {name, value} = evt.target;
 		setFormData(fData => ({
 			...fData,
-			[name]: Number(value),
+			[name]: value,
 		}));
 	}
 
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		roomSelect(formData);
+		roomSelect(formData.roomSelect);
 	}
 
 	return (
 		<form>
 			<label htmlFor="roomSelect">Select room</label>
-			<select id="roomSelect" name="roomSelect" onChange={handleChange}>
+			<select name="roomSelect" value={formData.roomSelect} onChange={handleChange}>
 				{
 					room.exits.map(exit => {
-						return (<option id={exit} value={exit}>{exit}</option>)
+						return (<option key={exit} value={exit}>{exit}</option>)
 					})
 				}
 			</select>

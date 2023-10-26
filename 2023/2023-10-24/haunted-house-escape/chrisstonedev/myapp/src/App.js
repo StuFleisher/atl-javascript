@@ -6,6 +6,7 @@ import UserInput from "./UserInput";
 
 function App() {
 	const [currentRoom, setCurrentRoom] = useState(rooms[0]);
+	console.log("Rendering app. CurrentRoom=", currentRoom)
 
 	function updateCurrentRoom(roomName) {
 		const newRoom = rooms.find(room => room.name === roomName);

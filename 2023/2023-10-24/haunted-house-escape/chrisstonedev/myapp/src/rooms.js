@@ -12,17 +12,17 @@ const rooms = [
 	{
 		name: 'Kitchen',
 		description: 'This is a spooky kitchen.',
-		exits: [],
+		exits: ['Library','Bedroom'],
 	},
 	{
 		name: 'Bedroom',
 		description: 'This is an abandoned bedroom.',
-		exits: [],
+		exits: ['Kitchen','Crypt'],
 	},
 	{
 		name: 'Crypt',
 		description: 'This is a terrifying crypt.',
-		exits: [],
+		exits: ['Bedroom'],
 	},
 ];
 
