@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Room{
+  font-family: "IM+Fell+DW+Pica, Courier";
+}
+
+.Room-image{
+  max-width: 360px;
+}
+
+.Room-description {
+  padding: 2rem;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: left;
+  line-height: 1.5rem;
+}

@@ -5,7 +5,6 @@ function UserInput({room, roomSelect}) {
 	console.log("rendering userInput, formData:", formData);
 
 	useEffect(function updateFormOnRoomChange(){
-		console.log("useEffectRunning,", room);
 		setFormData({roomSelect:room.exits[0]})
 	},[room])
 
@@ -24,15 +23,17 @@ function UserInput({room, roomSelect}) {
 
 	return (
 		<form>
-			<label htmlFor="roomSelect">Select room</label>
-			<select name="roomSelect" value={formData.roomSelect} onChange={handleChange}>
-				{
-					room.exits.map(exit => {
-						return (<option key={exit} value={exit}>{exit}</option>)
-					})
-				}
-			</select>
-			<button onClick={handleSubmit}>Move to room</button>
+			<label htmlFor="roomSelect">Where do you go next?</label>
+			<p>
+				<select name="roomSelect" value={formData.roomSelect} onChange={handleChange}>
+					{
+						room.exits.map(exit => {
+							return (<option key={exit} value={exit}>{exit}</option>)
+						})
+					}
+				</select>
+				<button onClick={handleSubmit}>Go to the {formData.roomSelect}</button>
+			</p>
 		</form>
 	);
 }
