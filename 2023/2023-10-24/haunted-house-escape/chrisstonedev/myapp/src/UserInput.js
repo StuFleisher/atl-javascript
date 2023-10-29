@@ -22,7 +22,7 @@ function UserInput({room, roomSelect}) {
 	}
 
 	return (
-		<form>
+		<form className="UserInput">
 			<label htmlFor="roomSelect">Where do you go next?</label>
 			<p>
 				<select name="roomSelect" value={formData.roomSelect} onChange={handleChange}>

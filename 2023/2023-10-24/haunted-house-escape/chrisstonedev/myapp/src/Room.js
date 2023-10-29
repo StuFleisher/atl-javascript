@@ -10,7 +10,7 @@ function Room({room}) {
 		<div className="Room">
 			<h3 className="Room-name">{name}</h3>
 			<img className="Room-image" src={imgUrl} alt={name}></img>
-			<div className="Room description">
+			<div className="Room-description">
 				{splitDescription.map((s,i)=><p key={i}>{s}</p>)}
 			</div>
 		</div>

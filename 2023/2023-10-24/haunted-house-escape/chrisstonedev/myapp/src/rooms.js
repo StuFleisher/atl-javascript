@@ -1,5 +1,14 @@
 const rooms = [
 	{
+		name: 'Courtyard',
+		description: `
+		The once-manicured courtyard now lies wild and untamed, a testament to nature's resilience. Vines crawl up the walls, their tendrils weaving through cracks and crevices. The flagstone path, cracked and overgrown, leads you through the chaotic beauty of this outdoor sanctuary. In the center stands a forgotten fountain, its water long dried up. The air is fresh here, a welcome reprieve from the heavy atmosphere inside the manor.
+		Exits lead to the garage, a realm of silent machines; back into the foyer, the manor’s somber heart; and into the hedge maze, a labyrinth of secrets and shadows.
+		`,
+		exits: ['Garage', 'Foyer', 'Hedge Maze'],
+		imgUrl: '/images/Courtyard.jpg'
+	},
+	{
 		name: 'Foyer',
 		description: `
 		The manor’s entrance envelops you in a realm of faded grandeur and forgotten tales. The vaulted ceiling, once a canvas of exquisite artistry, now looms above, its beauty marred by the passage of time. Broken chandeliers cast trembling shadows across the worn floorboards, and the remnants of lavish wallpaper hang limply from the walls.
@@ -54,15 +63,6 @@ const rooms = [
 		`,
 		exits: ['Servant Quarters', 'Courtyard'],
 		imgUrl: '/images/Garage.jpg'
-	},
-	{
-		name: 'Courtyard',
-		description: `
-		The once-manicured courtyard now lies wild and untamed, a testament to nature's resilience. Vines crawl up the walls, their tendrils weaving through cracks and crevices. The flagstone path, cracked and overgrown, leads you through the chaotic beauty of this outdoor sanctuary. In the center stands a forgotten fountain, its water long dried up. The air is fresh here, a welcome reprieve from the heavy atmosphere inside the manor.
-		Exits lead to the garage, a realm of silent machines; back into the foyer, the manor’s somber heart; and into the hedge maze, a labyrinth of secrets and shadows.
-		`,
-		exits: ['Garage', 'Foyer', 'Hedge Maze'],
-		imgUrl: '/images/Courtyard.jpg'
 	},
 	{
 		name: 'Hedge Maze',
