@@ -1,13 +1,39 @@
 import {useState, useEffect} from "react";
 
-function UserInput({room, roomSelect}) {
-	const [formData, setFormData] = useState({roomSelect:room.exits[0]});
-	console.log("rendering userInput, formData:", formData);
+/** Displays a menu for user navigation.
+ *
+ * PROPS:
+ *
+ * clue
+		* A clue can represent a room
+		* an object, or an event with information about the mystery, and looks like
+		* this:
+		*
+		* {
+		* 		name, 					>> Name for the page
+		* 		description,		>> Text Description for display
+		* 		exits, 					>> Array of rooms accessible from here
+		*			details,				>> (Optional) Array of detail pages visible from here
+		*	 		imgUrl, 				>> URL of image to display
+		*	 		altText, 				>> Alt text for image to display
+		* }
+ *
+ * roomSelect:
+ 		* A callback function which handles form submission
+ *
+ * App > UserInput
+ */
+function UserInput({clue, clueSelect}) {
+
+	const [formData, setFormData] = useState(
+		{clueSelect:(clue.exits[0])}
+	);
 
 	useEffect(function updateFormOnRoomChange(){
-		setFormData({roomSelect:room.exits[0]})
-	},[room])
+			setFormData({clueSelect:clue.exits[0]})
+	},[clue])
 
+	//handles changes to the form
 	function handleChange(evt) {
 		const {name, value} = evt.target;
 		setFormData(fData => ({
@@ -16,23 +42,32 @@ function UserInput({room, roomSelect}) {
 		}));
 	}
 
+	//handles form submission
 	function handleSubmit(evt) {
 		evt.preventDefault();
-		roomSelect(formData.roomSelect);
+		clueSelect(formData.clueSelect);
 	}
 
 	return (
 		<form className="UserInput">
-			<label htmlFor="roomSelect">Where do you go next?</label>
+			<label htmlFor="clueSelect">What is your next move?</label>
 			<p>
-				<select name="roomSelect" value={formData.roomSelect} onChange={handleChange}>
+				<select name="clueSelect" value={formData.clueSelect} onChange={handleChange}>
 					{
-						room.exits.map(exit => {
-							return (<option key={exit} value={exit}>{exit}</option>)
+						clue.exits.map(exit => {
+							return (<option key={exit} value={exit}>Go to the {exit}</option>)
 						})
 					}
+					{(clue.details)
+					?
+						clue.details.map(clue => {
+								return (<option key={clue} value={clue}>Investigate the {clue}</option>)
+							})
+					:
+						""
+					}
 				</select>
-				<button onClick={handleSubmit}>Go to the {formData.roomSelect}</button>
+				<button onClick={handleSubmit}>{'>'}</button>
 			</p>
 		</form>
 	);
